@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+               xmlns:s="library://ns.adobe.com/flex/spark" 
+               xmlns:mx="library://ns.adobe.com/flex/halo">
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:states>
+		<s:State name="connected"/>
+		<s:State name="disconnected"/>
+	</s:states>
+	<s:Rect width="100%" height="32">
+		<s:fill>
+			<s:SolidColor 
+				color.connected="0x00ff00"
+				color.disconnected="0xff0000"/>
+		</s:fill>
+	</s:Rect>
+	<s:HGroup width="100%" height="100%" paddingLeft="10" paddingRight="10" verticalAlign="middle">
+		<s:Label width="100%"
+		text.connected="Online" 
+		text.disconnected="Offline"/>
+		<!--<s:Button label="Connect"/>-->
+	</s:HGroup>
+	
+</s:Group>

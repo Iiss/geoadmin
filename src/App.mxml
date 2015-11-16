@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:views="mvc.views.*"
+			   addedToStage="init()">
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+		import robotlegs.bender.framework.impl.Context;
+		import robotlegs.bender.extensions.contextView.ContextView;
+		import bundles.MVCSBundleNoTraceLog;
+		import robotlegs.bender.extensions.signalCommandMap.SignalCommandMapExtension;
+		import robotlegs.bender.framework.api.IContext;
+		import flash.display.StageScaleMode;
+		
+		protected var context:IContext;
+		private function init():void
+		{
+			//setup context
+			context = Context(new Context()
+			.install(MVCSBundleNoTraceLog,SignalCommandMapExtension)
+			.configure(new AppConfig())
+			.configure(new ContextView(this)));
+		}
+		]]>
+	</fx:Script>
+	<s:VGroup width="100%" gap="0">
+		<views:ConnectionPanel width="100%" />
+		<views:ConsoleView width="100%" height="100"/>
+		<views:StorageView width="100%" height="100%"/>
+	</s:VGroup>
+</s:Application>

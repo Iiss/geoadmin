@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+               xmlns:s="library://ns.adobe.com/flex/spark" 
+               xmlns:mx="library://ns.adobe.com/flex/halo"
+			   title="Введите номер пробы">
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+		import mx.managers.PopUpManager;
+		import mvc.events.GameEvent;
+		
+		private var _data:*
+		
+		public function get data():*{ return _data; }
+		public function set data(data:*):void
+		{
+			_data = data;
+			setStyle("backgroundColor", data.color);
+			probe_num.text = "";
+			boxNum_txt.text = data.boxNumber.toString();
+			cellInfo_txt.text = '['+data.cell_x+', '+data.cell_y+']'
+		}
+		
+		private function close():void
+		{
+			PopUpManager.removePopUp(this);
+		}
+		
+		private function submit():void
+		{
+			if(data)
+			{
+				var ge:GameEvent = new GameEvent(GameEvent.ASSIGN_PROBE);
+				ge.data = { probe_id:data.id, kern_id:parseInt(probe_num.text) };
+				dispatchEvent(ge);
+			}
+			close();
+		}
+		]]>
+	</fx:Script>
+	<s:VGroup width="100%" height="100%" 
+		paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10">
+		<s:HGroup>
+			<s:Label id="boxNum_txt" fontSize="32"/>
+			<s:Label id="cellInfo_txt" />
+		</s:HGroup>
+		<s:TextInput id="probe_num" width="100%" restrict="0-9" />
+		<s:HGroup horizontalAlign="right" paddingTop="20">
+			<s:Button id="submit_btn" label="Ок" click="submit()" enabled="{Boolean(probe_num.text)}" />
+			<s:Button label="Отмена" click="close()" />
+		</s:HGroup>
+	</s:VGroup>
+</s:Panel>

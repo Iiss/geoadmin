@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:List xmlns:fx="http://ns.adobe.com/mxml/2009" 
+               xmlns:s="library://ns.adobe.com/flex/spark" 
+               xmlns:mx="library://ns.adobe.com/flex/halo"
+			   itemRenderer="mvc.views.itemRenderers.StorageRenderer"
+			   borderAlpha="0" click="_onClick(event)">
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+		import flash.events.MouseEvent;
+		import mvc.events.GameEvent;
+		import spark.components.supportClasses.ItemRenderer;
+		import mvc.views.AssignProbeForm;
+		import mx.managers.PopUpManager;
+		
+		private var _form:AssignProbeForm = new mvc.views.AssignProbeForm();
+		public function get form():AssignProbeForm { return _form; }
+		
+		private function _onClick(e:MouseEvent):void
+		{
+			var item:ItemRenderer = e.target as ItemRenderer;
+			if (item)
+			{
+				PopUpManager.addPopUp(_form, this, true);
+				PopUpManager.centerPopUp(_form);
+				_form.data = selectedItem;
+			} 
+		}
+		
+		]]>
+	</fx:Script>
+	<s:layout>
+		<s:TileLayout requestedColumnCount="4" columnWidth="100" rowHeight="100" requestedRowCount="4"/>
+	</s:layout>
+</s:List>

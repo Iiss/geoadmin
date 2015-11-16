@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<storage>
+	<item rock_key="1" color="0xff0000" box_number="1"/>
+	<item rock_key="2" color="0x00ff00" box_number="2"/>
+	<item rock_key="3" color="0x0000ff" box_number="3"/>
+	<item rock_key="4" color="0x00ffff" box_number="4"/>
+	<item rock_key="5" color="0xffff00" box_number="5"/>
+	<item rock_key="6" color="0xff00ff" box_number="6"/>
+	<item rock_key="7" color="0xff0000" box_number="7"/>
+	<item rock_key="8" color="0x00ff00" box_number="8"/>
+	<item rock_key="9" color="0x0000ff" box_number="9"/>
+	<item rock_key="10" color="0x00ffff" box_number="10"/>
+	<item rock_key="11" color="0xffff00" box_number="11"/>
+	<item rock_key="12" color="0xff00ff" box_number="12"/>
+	<item rock_key="13" color="0xff0000" box_number="13"/>
+</storage>
