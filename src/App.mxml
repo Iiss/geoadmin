@@ -31,6 +31,9 @@
 	<s:VGroup width="100%" gap="0">
 		<views:ConnectionPanel width="100%" />
 		<views:ConsoleView width="100%" height="100"/>
-		<views:StorageView width="100%" height="100%"/>
+		<s:HGroup width="100%" height="100%">
+			<views:StorageView minWidth="450" width="100%" height="100%"/>
+			<views:ActionsView minWidth="100" height="100%"/>
+		</s:HGroup>
 	</s:VGroup>
 </s:Application>

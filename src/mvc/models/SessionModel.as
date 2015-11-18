@@ -13,32 +13,58 @@ package mvc.models
 	public class SessionModel extends EventDispatcher
 	{
 		private static const STORAGE_DATA_VAR:String = "storage";
+		private static const LAYERS_DATA_VAR:String = "layers";
 		
 		private var _room:Room;
 		private var _storage:ArrayCollection;
+		private var _layers:ArrayCollection;
 		
 		public function get storage():ArrayCollection { return _storage; }
 		public function get room():Room { return _room; }
+		public function get layers():ArrayCollection { return _layers; }
 		
 		public function SessionModel() 
 		{
 			_storage = new ArrayCollection();
+			_layers = new ArrayCollection();
 		}
 		
 		public function setup(room:Room):void
 		{
 			_room = room;
-			updateStorage();
+			updateRoomVars([
+							LAYERS_DATA_VAR,
+							STORAGE_DATA_VAR
+							]);
 		}
 		
-		public function updateRoomVariable(varName:String):void
+		public function updateRoomVars(varsArr:Array):void
 		{
-			switch (true)
+			for each (var roomVar:String in varsArr)
 			{
-				case varName == STORAGE_DATA_VAR:
-					updateStorage();
-					break;
+				switch (roomVar)
+				{
+					case LAYERS_DATA_VAR:
+						updateLayers();
+						break;
+						
+					case STORAGE_DATA_VAR:
+						updateStorage();
+						break;
+				}
 			}
+		}
+		
+		private function updateLayers():void
+		{
+			var src:Array = dumpToArray(LAYERS_DATA_VAR);
+			var newLayers:Array = new Array();
+			
+			for each(var obj:* in src)
+			{
+				newLayers.push(new LayerModel(obj));
+			}
+			_layers.source = newLayers;
 		}
 		
 		private function updateStorage():void

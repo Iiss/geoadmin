@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+               xmlns:s="library://ns.adobe.com/flex/spark" 
+               xmlns:mx="library://ns.adobe.com/flex/halo">
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:HGroup>
+		<s:ComboBox width="100%"/>
+		<s:Button id="loadSessionBtn" label="Загрузить"/>
+	</s:HGroup>
+	<s:DataGroup id="layerSelector" itemRenderer="mvc.views.itemRenderers.LayerItemRenderer">
+		<s:layout>
+			<s:VerticalLayout horizontalAlign="justify" gap="0"/>
+		</s:layout>
+	</s:DataGroup>
+</s:VGroup>

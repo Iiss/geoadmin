@@ -23,6 +23,10 @@ package
 	import mvc.events.GameEvent;
 	import mvc.commands.AssignProbeCommand;
 	import mvc.commands.PingCommand;
+	import mvc.views.ActionsView;
+	import mvc.mediators.ActionsViewMediator;
+	import mvc.commands.LoadSessionCommand;
+	import mvc.commands.ToggleLayerCommand;
 	/**
 	 * ...
 	 * @author liss
@@ -61,10 +65,13 @@ package
 			mediatorMap.map(ConsoleView).toMediator(ConsoleMediator);
 			mediatorMap.map(ConnectionPanel).toMediator(ConnectionPanelMediator);
 			mediatorMap.map(StorageView).toMediator(StorageViewMediator);
+			mediatorMap.map(ActionsView).toMediator(ActionsViewMediator);
 		
 			//event
 			eventCommandMap.map(GameEvent.ASSIGN_PROBE, GameEvent).toCommand(AssignProbeCommand);
 			eventCommandMap.map(GameEvent.PING, GameEvent).toCommand(PingCommand);
+			eventCommandMap.map(GameEvent.LOAD_SESSION, GameEvent).toCommand(LoadSessionCommand);
+			eventCommandMap.map(GameEvent.TOGGLE_LAYER, GameEvent).toCommand(ToggleLayerCommand);
 			eventCommandMap.map(SFSEvent.ROOM_VARIABLES_UPDATE, SFSEvent).toCommand(UpdateRoomVarsCommand);
 			//Commands
 			directCommandMap.map(StartupCommand).execute();

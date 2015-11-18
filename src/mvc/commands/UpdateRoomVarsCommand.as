@@ -23,10 +23,7 @@ package mvc.commands
 		override public function execute():void 
 		{
 			super.execute();
-			for each (var varName:String in event.params.changedVars)
-			{
-				sessionModel.updateRoomVariable(varName);
-			}
+			sessionModel.updateRoomVars(event.params.changedVars);
 		}	
 	}
 }
