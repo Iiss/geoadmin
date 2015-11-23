@@ -5,11 +5,15 @@ package mvc.commands
 		
 		public function LoadSessionCommand() 
 		{
-			super("game.next");
+			super("game.load");
 		}
 		
 		override public function execute():void 
 		{
+			if (!gameEvent.data.id)
+			{
+				_command = "game.next";
+			}
 			super.execute();
 		}
 	}

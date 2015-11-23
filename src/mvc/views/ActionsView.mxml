@@ -7,7 +7,7 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:HGroup>
-		<s:ComboBox width="100%"/>
+		<s:DropDownList id="mapSelector" labelField="title" width="100%" requireSelection="true" />
 		<s:Button id="loadSessionBtn" label="Загрузить"/>
 	</s:HGroup>
 	<s:DataGroup id="layerSelector" itemRenderer="mvc.views.itemRenderers.LayerItemRenderer">

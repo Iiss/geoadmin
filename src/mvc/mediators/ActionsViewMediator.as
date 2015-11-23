@@ -28,11 +28,12 @@ package mvc.mediators
 			eventMap.mapListener(view.loadSessionBtn, MouseEvent.CLICK, _onLoadSessionClick);
 			eventMap.mapListener(view.layerSelector, MouseEvent.MOUSE_DOWN, _onLayerSelectorClick);
 			view.layerSelector.dataProvider = sessionModel.layers;
+			view.mapSelector.dataProvider = sessionModel.maps;
 		}
 		
 		private function _onLoadSessionClick(e:MouseEvent):void
 		{
-			_dispatchCommandEvent(GameEvent.LOAD_SESSION);
+			_dispatchCommandEvent(GameEvent.LOAD_SESSION,{id:view.mapSelector.selectedItem.id});
 		}
 		
 		private function _onLayerSelectorClick(e:MouseEvent):void

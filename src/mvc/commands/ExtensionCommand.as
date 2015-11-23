@@ -23,7 +23,7 @@ package mvc.commands
 		[Inject]
 		public var gameEvent:GameEvent;
 		
-		private var _command:String;
+		protected var _command:String;
 		
 		public function ExtensionCommand(cmd:String) 
 		{

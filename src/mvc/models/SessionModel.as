@@ -14,24 +14,30 @@ package mvc.models
 	{
 		private static const STORAGE_DATA_VAR:String = "storage";
 		private static const LAYERS_DATA_VAR:String = "layers";
+		private static const HAS_COMMON_MAPS_VAR:String = "hasCommonMaps";
+		private static const EPIC_MAPS_VAR:String = "epicMaps";
 		
 		private var _room:Room;
 		private var _storage:ArrayCollection;
 		private var _layers:ArrayCollection;
+		private var _maps:ArrayCollection;
 		
 		public function get storage():ArrayCollection { return _storage; }
 		public function get room():Room { return _room; }
 		public function get layers():ArrayCollection { return _layers; }
+		public function get maps():ArrayCollection { return _maps; }
 		
 		public function SessionModel() 
 		{
 			_storage = new ArrayCollection();
 			_layers = new ArrayCollection();
+			_maps = new ArrayCollection();
 		}
 		
 		public function setup(room:Room):void
 		{
 			_room = room;
+			updateMapList();
 			updateRoomVars([
 							LAYERS_DATA_VAR,
 							STORAGE_DATA_VAR
@@ -53,6 +59,16 @@ package mvc.models
 						break;
 				}
 			}
+		}
+		
+		private function updateMapList():void
+		{
+			var epicMaps:Array = dumpToArray(EPIC_MAPS_VAR);
+			if (room.getVariable(HAS_COMMON_MAPS_VAR).getBoolValue())
+			{
+				epicMaps.unshift( { title: "Станд. игра" } );
+			}
+			_maps.source = epicMaps;
 		}
 		
 		private function updateLayers():void
